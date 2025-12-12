@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: mibolsillo_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: mibolsillo
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mibolsillo_net
+
+  server:
+    build: ./server
+    container_name: mibolsillo_server
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=admin
+      - DB_PASSWORD=adminpassword
+      - DB_NAME=mibolsillo
+      - PORT=3000
+    depends_on:
+      - db
+    networks:
+      - mibolsillo_net
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+networks:
+  mibolsillo_net:
+    driver: bridge
+
+volumes:
+  postgres_data:

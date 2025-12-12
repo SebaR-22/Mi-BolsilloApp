@@ -1,0 +1,32 @@
+{
+    "name": "mibolsillo-server",
+    "version": "1.0.0",
+    "description": "Backend for MiBolsillo App",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js",
+        "test": "jest --detectOpenHandles",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage"
+    },
+    "dependencies": {
+        "@google/generative-ai": "^0.24.1",
+        "@supabase/supabase-js": "^2.86.2",
+        "axios": "^1.6.0",
+        "bcrypt": "^5.1.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.0",
+        "openai": "^3.2.1",
+        "pdfkit": "^0.13.0",
+        "pg": "^8.10.0",
+        "sequelize": "^6.29.3"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0",
+        "nodemon": "^2.0.21",
+        "supertest": "^6.3.3"
+    }
+}
